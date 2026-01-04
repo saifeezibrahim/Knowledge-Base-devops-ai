@@ -1,0 +1,55 @@
+# HashiCorp Packer
+
+<https://www.packer.io/>
+
+Packer is a tool for automating building virtual machines templates such as importable `.ova` files.
+
+This usually involves running automated installers that are native to each Linux distribution such as:
+
+- Debian [Preseed](debian.md#REDACTED)
+- Redhat [Kickstart](redhat.md#REDACTED)
+- Ubuntu [Autoinstall](ubuntu.md#REDACTED)
+
+Packer can be used to create AMI + Vagrant box at same time.
+
+<!-- INDEX_START -->
+
+- [Configs](#configs)
+- [Convert an Old Packer JSON template to HCL](#REDACTED)
+- [Sharing AMIs Between AWS Accounts](#REDACTED)
+- [Troubleshooting](#troubleshooting)
+  - [Debug Mode](#debug-mode)
+
+<!-- INDEX_END -->
+
+## Configs
+
+See [HariSekhon/Packer](https://github.com/HariSekhon/Packer) repo.
+
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=HariSekhon&repo=Packer&theme=ambient_gradient&description_lines_count=3)](https://github.com/HariSekhon/Packer)
+
+## Convert an Old Packer JSON template to HCL
+
+```shell
+packer hcl2_upgrade "$file.json"
+```
+
+Output:
+
+```text
+Successfully created "$file.json.pkr.hcl". Exit 0
+```
+
+## Sharing AMIs Between AWS Accounts
+
+Packer can build in your CI/CD AWS account, and then you can share to your other AWS Accounts from this central place.
+
+See [AWS - Sharing AMIs Between Accounts](aws.md#REDACTED).
+
+## Troubleshooting
+
+### Debug Mode
+
+```shell
+PACKER_LOG=1 packer build "$file.pkr.hcl"
+```
